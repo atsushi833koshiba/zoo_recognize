@@ -1,0 +1,44 @@
+{% extends 'zoo_app/base.html' %}
+
+{% block content %}
+  <form action="recognizeImage" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <div class="row">
+      <div id="droparea" class="droparea col s5">
+          <p class="dragdrop-contents mgt-65px">ここにドラッグアンドドロップ<br>または<br>クリックしてください。</p>
+            <input id="fileInput" type="file" name="file" accept="image/*" multiple>
+            <input id="filePath" name="filePath" type="hidden">
+      </div>
+      <div id="listarea" class="col s4">
+      </div>
+    </div>
+
+    <button class="btn green darken-4 mgt-15px" type="submit">
+      画像判定実行！
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
+  <div id="outarea" class="mgt-65px">
+    {% if is_display %}
+      <div class="row">
+      {% for animal, base64_img, proba in allList %}
+          <div class="col s4"">
+            <div class="card w-300px">
+              <div class="card-image">
+                <img src="data:image/jpeg;base64,{{base64_img}}">
+                <span class="card-title">Maybe... {{proba}}%で<br>{{animal.animal_name}}!</span>
+              </div>
+              <div class="card-content" class="h-120px">
+                <p class="ellipsis">{{animal.animal_disc}}</p>
+              </div>
+              <div class="card-action">
+                <a href="#">Display details</a>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang=ja dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Compiled and minified JavaScript -->
+    <title>{% block title %}動物判定アプリ{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper light-green darken-3">
+                <a href="/" class="brand-logo mgl-10px">動物判定アプリ</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down mgr-30px">
+                    <li><i class="material-icons fnt-sz-36px">account_circle</i></li>
+                </ul>
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+      </div>
+    </header>
+
+    <ul id="slide-out" class="sidenav sidenav-fixed mgt-65px w-250px">
+        <li><a href="/"><i class="small material-icons">home</i> ホーム</a></li>
+        <li><a href="zoo"><i class="small material-icons">image</i> 動物画像診断</a></li>
+    </ul>
+
+    <main class="mgt-30px">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+
+    {% block script %}
+    {% endblock %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const elems = document.querySelectorAll('.sidenav');
+          const instances = M.Sidenav.init(elems, {});
+      });
+    </script>
+    <script src="/static/js/dragdrop.js"></script>
+    <script src="/static/js/card-creator.js"></script>
+  </body>
+</html>

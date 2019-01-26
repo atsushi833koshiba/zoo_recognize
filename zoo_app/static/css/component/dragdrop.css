@@ -1,0 +1,18 @@
+.droparea {
+    height: 200px;
+    max-width: 450px;
+    border: 2px dashed #006600;
+}
+
+.droparea.dragover {
+    background: #EEEEEE;
+    border-color: #BBBBBB;
+}
+
+.dragdrop-contents {
+    text-align: center;
+}
+
+#fileInput {
+    display: none;
+}
